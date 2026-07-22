@@ -1,2 +1,48 @@
-### Get all books
-GET http://localhost:3000/app
+```http
+### Home
+GET http://localhost:3000/
+
+
+### Health check
+GET http://localhost:3000/health
+
+
+### App info
+GET http://localhost:3000/api/info
+
+
+### Get user by ID
+GET http://localhost:3000/api/users/123
+
+
+### Search with query parameter
+GET http://localhost:3000/api/search?q=docker
+
+
+### Search without query parameter
+GET http://localhost:3000/api/search
+
+
+### Create message
+POST http://localhost:3000/api/messages
+Content-Type: application/json
+
+{
+  "message": "Hello from requests.http!"
+}
+
+
+### Create message - validation error
+POST http://localhost:3000/api/messages
+Content-Type: application/json
+
+{}
+
+
+### Test server error
+GET http://localhost:3000/api/error
+
+
+### Test 404
+GET http://localhost:3000/api/not-existing-route
+```
