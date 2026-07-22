@@ -1,2 +1,2 @@
 ### Get all books
-GET http://localhost:3000/api/status
+GET http://localhost:3000/app
