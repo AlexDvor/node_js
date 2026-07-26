@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import express, { Request, Response, NextFunction } from 'express';
+import userRouter from './routes/userRouter.js';
 
 const app = express();
 
@@ -10,67 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req: Request, res: Response) => {
 	res.status(200).json({
-		message: 'Node.js + Express API is running!',
+		message: 'Express API is running!',
 	});
 });
 
-app.get('/health', (req: Request, res: Response) => {
-	res.status(200).json({
-		status: 'ok',
-		uptime: process.uptime(),
-		timestamp: new Date().toISOString(),
-	});
-});
-
-app.get('/api/info', (req: Request, res: Response) => {
-	res.status(200).json({
-		app: 'Node.js Docker Test App',
-		environment: process.env.NODE_ENV || 'development',
-		port: PORT,
-	});
-});
-
-app.get('/api/users/:id', (req: Request, res: Response) => {
-	const { id } = req.params;
-
-	res.status(200).json({
-		message: 'User found',
-		user: {
-			id,
-			name: `User ${id}`,
-		},
-	});
-});
-
-app.get('/api/search', (req: Request, res: Response) => {
-	const { q } = req.query;
-
-	res.status(200).json({
-		query: q || null,
-		message: q ? `Searching for: ${q}` : 'No search query provided',
-	});
-});
-
-app.post('/api/messages', (req: Request, res: Response) => {
-	const { message } = req.body;
-
-	if (!message) {
-		return res.status(400).json({
-			error: 'Message is required',
-		});
-	}
-
-	res.status(201).json({
-		message: 'Message received',
-		data: {
-			message,
-		},
-	});
-});
-
-app.get('/api/error', (req: Request, res: Response, next: NextFunction) => {
-	next(new Error('Test server error'));
-});
+app.use('/user', userRouter);
 
 // 404
 app.use((req: Request, res: Response) => {
