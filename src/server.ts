@@ -9,6 +9,8 @@ const PORT = Number(process.env.APP_PORT) || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+console.log(process.env.DATABASE_URL);
+
 app.get('/', (req: Request, res: Response) => {
 	res.status(200).json({
 		message: 'Express API is running!',
