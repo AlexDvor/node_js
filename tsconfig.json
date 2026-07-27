@@ -8,10 +8,14 @@
 		"outDir": "./dist",
 
 		"strict": true,
+		"verbatimModuleSyntax": true,
+		"noEmitOnError": true,
+		"forceConsistentCasingInFileNames": true,
 		"skipLibCheck": true,
 		"esModuleInterop": true,
+		"sourceMap": true,
 		"removeComments": true
 	},
 	"include": ["src/**/*.ts"],
-	"exclude": ["node_modules", "dist"]
+	"exclude": ["node_modules", "dist", "src/generated/prisma"]
 }

@@ -4,10 +4,12 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "tsx watch src/server.ts",
-		"type-check": "tsc --noEmit",
+		"prisma:generate": "prisma generate",
+		"prisma:validate": "prisma validate",
+		"dev": "npm run prisma:generate && tsx watch src/server.ts",
+		"type-check": "npm run prisma:generate && tsc --noEmit",
 		"clean": "rimraf dist",
-		"build": "npm run clean && tsc",
+		"build": "npm run prisma:generate && npm run clean && tsc",
 		"start": "node dist/server.js"
 	},
 	"keywords": [],
