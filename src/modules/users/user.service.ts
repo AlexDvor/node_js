@@ -5,8 +5,16 @@ export interface CreateUserInput {
 	email: string;
 }
 
+
+
+export function getAllUser() {
+	return prisma.user.findMany()
+}
+
 export function createUser(input: CreateUserInput) {
 	return prisma.user.create({
 		data: input,
 	});
 }
+
+

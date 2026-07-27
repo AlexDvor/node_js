@@ -9,6 +9,6 @@ POST http://localhost:3000/user/create
 Content-Type: application/json
 
 {
-  "name": "AlexDvor",
-  "email": "alex.dvor@example.com"
+  "name": "Dvor",
+  "email": "dvor@example.com"
 }

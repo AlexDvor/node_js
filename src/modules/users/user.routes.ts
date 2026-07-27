@@ -4,14 +4,16 @@ import {
 	type Request,
 	type Response,
 } from 'express';
-import { createUser } from './user.service.js';
+import { createUser, getAllUser } from './user.service.js';
 
 export const userRouter = Router();
 
-userRouter.get('/getAll', (_req: Request, res: Response) => {
-	res.status(200).json({
-		message: 'All users retrieved successfully',
-	});
+userRouter.get('/getAll', async (_req: Request, res: Response) => {
+
+	const allUser = await getAllUser()
+
+	res.status(200).json(allUser) 
+	
 });
 
 userRouter.post(
